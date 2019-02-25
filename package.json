@@ -44,10 +44,13 @@
     "@nguniversal/common": "^6.0.0",
     "@nguniversal/express-engine": "^6.0.0",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
+    "angularfire2": "^5.1.1",
     "core-js": "^2.4.1",
     "express": "^4.15.2",
+    "firebase": "^5.8.4",
     "reflect-metadata": "^0.1.10",
     "rxjs": "6.3.3",
+    "rxjs-compat": "6.3.3",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
