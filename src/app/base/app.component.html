@@ -3,9 +3,14 @@
     <span>What To Do</span>
   </a>
 
-  <div class="float-right">
-  	<a routerLink="">
-  		
+  <div class="float-right" *ngIf="afAuth.authState | async">
+  	<a routerLink="/">
+      <i class="fa fa-list"></i>
+      <span class="small-font">Mis Listas</span>
+    </a>
+
+    <a routerLink="#" (click)="logout()">
+      <i class="fa fa-sign-out"></i>
   	</a>
   </div>
 

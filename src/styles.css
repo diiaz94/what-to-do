@@ -6,6 +6,22 @@
 	padding: 10px 15px;	
 }
 
+.float-right{
+	float: right;
+}
+
+.small-font{
+	font-size: 0.8rem;
+}
+
+.main-nav .float-right a{
+	margin-left: 1em;
+}
+
+.main-nav .float-right a span{
+	margin-left: 5px;
+}
+
 .main-nav a{
 	text-decoration: none;
 }
