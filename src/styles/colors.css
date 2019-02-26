@@ -3,6 +3,11 @@
 	blue:#4F80E1
 */
 
+body{
+	background-color: #232C44;
+	color: #F0F0F1;
+}
+
 .blue{
 	background-color: #4F80E1;
 }
