@@ -7,13 +7,16 @@ import { ListService } from '../services/lists.service';
 })
 export class HomeComponent implements OnInit{
   public message: string;
+  
 
   constructor(private listS : ListService){
-
+    
   }
 
   ngOnInit(){
-
+    this.listS.getLists().subscribe(lists =>{
+      console.log(lists)
+    })
   }
-  
+
 }

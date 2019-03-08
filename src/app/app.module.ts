@@ -27,6 +27,7 @@ import { AuthGuard } from './guards/auth.guard.service';
 
 import {TransferHttpCacheModule} from '@nguniversal/common';
 
+//import { AngularFontAwesomeModule } from 'angular-font-awesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,7 @@ import {TransferHttpCacheModule} from '@nguniversal/common';
     AngularFirestoreModule,
     FormsModule
   ],
-  providers: [AuthService, AuthGuard, UserService, ListService],
+  providers: [AuthService, AuthGuard, UserService, ListService, { provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
