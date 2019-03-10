@@ -18,7 +18,7 @@ export class ListCreatorComponent implements OnInit{
 
     }
 
-    save(){0
+    save(){
         this.listS.add(this.list).then((result)=>{
             this.list.title = '';
         });

@@ -18,6 +18,7 @@ import { AppComponent } from './base/app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ListCreatorComponent } from './lists/creator/list.creator.component';
+import { ListComponent } from './lists/list.component';
 
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -27,13 +28,13 @@ import { AuthGuard } from './guards/auth.guard.service';
 
 import {TransferHttpCacheModule} from '@nguniversal/common';
 
-//import { AngularFontAwesomeModule } from 'angular-font-awesome';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ListCreatorComponent
+    ListCreatorComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'my-app'}),
