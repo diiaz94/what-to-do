@@ -6,6 +6,9 @@
 	padding: 10px 15px;	
 }
 
+.lateral-padding{
+	padding: 0 15px;	
+}
 .float-right{
 	float: right;
 }
