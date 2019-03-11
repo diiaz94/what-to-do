@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ITodo, TStatus } from '../../structures/todos';
 import { TodoService } from '../../services/todos.service';
 
-import { trigger, state, style,transition, animate } from '@angular/animations';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
     selector: 'todo-creator',
