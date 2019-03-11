@@ -24,6 +24,7 @@ import { TodoCreatorComponent } from './todos/creator/todos.creator.component';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { ListService } from './services/lists.service';
+import { TodoService } from './services/todos.service';
 
 import { AuthGuard } from './guards/auth.guard.service';
 
@@ -47,7 +48,7 @@ import {TransferHttpCacheModule} from '@nguniversal/common';
     AngularFirestoreModule,
     FormsModule
   ],
-  providers: [AuthService, AuthGuard, UserService, ListService, { provide: FirestoreSettingsToken, useValue: {} }],
+  providers: [AuthService, AuthGuard, UserService, ListService, TodoService, { provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
