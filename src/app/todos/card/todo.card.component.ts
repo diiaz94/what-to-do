@@ -8,5 +8,10 @@ import { ITodo } from "../../structures/todos";
 
 export class TodoCardComponent implements OnInit{
     @Input()  todo : ITodo;
+
     ngOnInit(){}
+
+    completed(){
+        console.log('completed');        
+    }
 }

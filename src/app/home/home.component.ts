@@ -28,12 +28,6 @@ export class HomeComponent implements OnInit{
     
   }
 
-  ngOnInit(){
-    this.listS.getLists().subscribe(lists =>{
-      console.log(lists)
-    })
-  }
-
-  
+  ngOnInit(){}  
 
 }
