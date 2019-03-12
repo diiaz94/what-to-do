@@ -30,7 +30,9 @@ export class TodoCreatorComponent implements OnInit{
     ngOnInit(){}
 
     save(){
-        this.todoS.add(this.id,this.todo);
+        this.todoS.add(this.id,this.todo).then((r)=>{
+            this.todo = {content: '', description: null, status: TStatus.Created}
+        });
     }
     label(){
         return (this.formState == 'collapsed') ? 'Agregar nuevo pendiente' : 'Ocultar formulario';

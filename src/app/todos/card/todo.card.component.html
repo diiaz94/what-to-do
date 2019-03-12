@@ -1,4 +1,20 @@
-<article class="card large-padding top-space block" (swipeLeft)="completed()">
+<article 
+    class="card large-padding top-space block todo-card" 
+    (mousedown)="press='down'"
+    (mouseup)="press='up'"
+    (press)="press='down'"
+    (pressUp)="press='up'"
+    [@pressAnimation]="press" 
+    [@statusAnimation]="todo.status" 
+    (swipeLeft)="completed()">
     <h4>{{todo.content}}</h4>
+
+    <p *ngIf="todo.deadline">
+        <i class="fa fa-calendar"></i>
+        {{todo.deadline}}
+        {{moment.unix(todo.deadline).format("MM/DD/YYYY")}}<br>
+        {{moment(moment.unix(todo.deadline).format("MM/DD/YYYY")).fromNow()}}
+
+    </p>
     <p *ngIf="todo.description">{{todo.description}}</p>
 </article>

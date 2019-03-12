@@ -7,14 +7,20 @@ import { Observable } from 'rxjs/Rx';
 import { ITodo } from '../structures/todos';
 import { TodoService } from '../services/todos.service';
 
+import { enterAnimation } from '../animations/animations';
+
+
 @Component({
   selector: 'list',
-  templateUrl: 'list.component.html'
+  templateUrl: 'list.component.html',
+  animations:[enterAnimation]
 })
 export class ListComponent implements OnInit{
     public listId : string;
 
     public todos : Observable<ITodo[]>;
+
+    trackTodoObjects = (id,obj) => obj.id;
 
     constructor(private route: ActivatedRoute, private todoS : TodoService){}
 

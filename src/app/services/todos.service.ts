@@ -5,9 +5,10 @@ import { AuthService } from "./auth.service";
 
 import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from "angularfire2/firestore";
 
-import { ITodo } from "../structures/todos";
+import { ITodo, TStatus } from "../structures/todos";
 
 import * as firebase from 'firebase/app';
+import { share } from "rxjs/operators";
 
 @Injectable()
 export class TodoService{
@@ -20,12 +21,17 @@ export class TodoService{
 
     setCollection(listId : string){
         this.listId = listId;
-        this.collection = this.afs.collection('lists').doc(listId).collection('todos');
+        this.collection = this.afs.collection('lists')
+                            .doc(listId)
+                            .collection('todos',(ref)=>{
+                                return ref.where('status','==',TStatus.Created)
+                            });
 
-        this.ref = this.collection.snapshotChanges();
+        this.ref = this.collection.snapshotChanges().pipe(share());
     }
 
     getFromList(listId : string) : Observable<ITodo[]>{
+    
         if(!this.collection || this.listId != listId) this.setCollection(listId);
         
         return this.ref.map(actions=>{
@@ -46,5 +52,12 @@ export class TodoService{
         todo.createdAt = createdAt;
 
         return this.collection.add(todo); 
+    }
+
+    update(listId : string, todo: ITodo) : Promise<void>{
+      
+        if(!this.collection || this.listId != listId) this.setCollection(listId);
+    
+        return this.collection.doc(todo.id).update({status:todo.status});
     }
 }

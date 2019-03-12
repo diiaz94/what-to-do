@@ -3,7 +3,7 @@ import { Observable } from "rxjs/Observable";
 
 import { AuthService } from "./auth.service";
 
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "angularfire2/firestore";
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentChangeAction } from "angularfire2/firestore";
 
 import { IList } from "../structures/lists";
 
@@ -14,6 +14,7 @@ export class ListService{
     public uid : string;
     public listsCollection : AngularFirestoreCollection<IList>;
     public lists : Observable<IList[]>; 
+    private ref : Observable<DocumentChangeAction<IList>[]>;
 
     constructor(public afs : AngularFirestore, private auth : AuthService){
         this.auth.getUser().subscribe(user =>{
@@ -42,17 +43,8 @@ export class ListService{
         });
     });
 
+    this.ref = this.listsCollection.snapshotChanges();
 
-
-/*
-        db.collection("users").doc(this.uid).collection('lists')
-        .onSnapshot(function(querySnapshot) {
-            var lists = [];
-            querySnapshot.forEach(function(doc) {
-                lists.push(doc.data().title);
-            });
-            console.log("Current cities in CA: ", lists.join(", "));
-        });*/
    }
 
     add(list: IList): Promise<any>{
@@ -63,6 +55,18 @@ export class ListService{
         list.createdAt = createdAt;
 
         return this.listsCollection.add(list);
+    }
+
+    get():  Observable<IList[]>{
+        return this.ref.map(actions=>{
+            return actions.map(item =>{
+                const data = item.payload.doc.data() as IList;
+                const id = item.payload.doc.id;
+
+                return {...data,id};
+            })
+        });
+
     }
 
 }

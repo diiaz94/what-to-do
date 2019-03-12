@@ -8,11 +8,11 @@ import { environment } from '../environments/environment';
 import { routes } from './routes';
 
 import { AngularFireModule} from 'angularfire2';
-
-
 import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 import { FirestoreSettingsToken} from '@angular/fire/firestore';
+
+import { OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 
 import { AppComponent } from './base/app.component';
 import { HomeComponent } from './home/home.component';
@@ -50,7 +50,9 @@ import {TransferHttpCacheModule} from '@nguniversal/common';
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [AuthService, AuthGuard, UserService, ListService, TodoService, { provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]

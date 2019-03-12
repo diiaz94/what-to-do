@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import './styles/defaults.css';
 @import './styles/colors.css';
+@import 'ng-pick-datetime/assets/style/picker.min.css';
 
 .large-padding{
 	padding: 10px 15px;	
@@ -61,6 +62,7 @@ button.no-background{
 .card.card.with-badge h4{
 	grid-area: title;
 }
+
 .card.card.with-badge .badge{
 	grid-area: badge;
 	display: flex;
@@ -75,6 +77,21 @@ button.no-background{
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.todo-card{
+	position: relative;
+}
+
+.todo-card:after{
+	position: absolute;
+	z-index: -1;
+	content: '\f00c';
+	font-family: FontAwesome;
+	top: 50%;
+	right: -2em;
+	font-weight: bold;
+	color: #18CDCA;
+
 }
 
 .form-control{
